@@ -1,0 +1,7 @@
+第二章 ECHO协议
+
+ ctx.write(msg); // 
+ ctx.flush(); // 
+ 
+ 返回客户的输入的信息，强制从缓存输出到管道。  
+ 在DOS下使用 telnet localhost 8080  没有得到服务器返回数据。原因不明
