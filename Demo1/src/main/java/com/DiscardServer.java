@@ -16,10 +16,6 @@ public class DiscardServer {
     public DiscardServer(int port) {
         this.port = port;
     }
-    public void dd()
-    {
-    	
-    }
     
     public void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
