@@ -1,0 +1,1 @@
+服务器端的channelGroup.writeAndFlush方法，始终有问题。调用后客户端无法收到信息。

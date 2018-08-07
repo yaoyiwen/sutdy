@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket客户端</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    <h1>WebSocket客户端<br></h1>
+    
+    
+    <form action="" onsubmit="return false;">
+    	<textarea rows="10" cols="20" name="message"></textarea>
+    	<input type="button" value="发送" onclick="send(this.form.message.value)">
+    	
+    	<h3>服务器返回：</h3>
+    	<textarea rows="10" cols="20" id="responseText"></textarea>
+    </form>
+  </body>
+  
+  <script type="text/javascript">
+  
+  var socket;
+  if(window.WebSocket)
+  {
+  	socket = new WebSocket("ws://127.0.0.1:8899/ws");
+  	socket.onmessage = function(event)
+  	{
+  		var ta = document.getElementById("responseText");
+  	 	ta.value = event.data;
+  	}
+  	
+  	socket.onopen = function(event)
+  	{
+  		var ta = document.getElementById("responseText");
+  		ta.value = "开始链接";
+  	}
+  	
+  	socket.onclose = function(event)
+  	{
+  		var ta = document.getElementById("responseText");
+  		ta.value = "链接关闭";
+  	}
+  }
+  else
+  {
+  alert("浏览器不支持WebSocket");
+  }
+  
+  function send(message)
+  {
+  	if(!window.WebSocket)
+  	{
+  		return;
+  	}
+  	
+  	if(socket.readyState == WebSocket.OPEN)
+  	{
+  		socket.send(message);
+  	}
+  }
+  </script>
+</html>
