@@ -11,10 +11,14 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 public class DiscardServer {
 
-	private int port;  
+	private int port;   
 
     public DiscardServer(int port) {
         this.port = port;
+    }
+    public void dd()
+    {
+    	
     }
     
     public void run() throws Exception {
